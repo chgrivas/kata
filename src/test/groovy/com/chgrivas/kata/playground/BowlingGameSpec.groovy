@@ -13,21 +13,22 @@ class BowlingGameSpec extends Specification {
 
   def "rolling 20 zeros will result to zero score"() {
     when:
-      roll(20, 0)
+      game.roll(0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0)
     then:
-      0 == game.calculateScore()
+      game.calculateScore() == 0
   }
 
   def "rolling 20 ones will result to 20 score"() {
     when:
-      roll(20, 1)
+      game.roll(1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1)
     then:
-      20 == game.calculateScore()
+      game.calculateScore() == 20
   }
 
-  private void roll(int times, int rolledPins) {
-    for (int i = 0; i < times; i++) {
-      game.roll(rolledPins)
-    }
+  def "rolling 2 threes and all other 0 result to 9"() {
+    when:
+      game.roll(3,3, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0)
+    then:
+      game.calculateScore() == 9
   }
 }

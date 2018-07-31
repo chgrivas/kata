@@ -8,8 +8,10 @@ public class BowlingGame {
     this.score = 0;
   }
 
-  public void roll(int rolledPins) {
-    score += rolledPins;
+  public void roll(int...rolledPinsArray) {
+    for (int rolledPins : rolledPinsArray) {
+      score += rolledPins;
+    }
   }
 
   public int calculateScore() {
