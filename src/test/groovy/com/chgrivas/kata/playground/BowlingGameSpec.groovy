@@ -31,4 +31,11 @@ class BowlingGameSpec extends Specification {
     then:
       game.calculateScore() == 9
   }
+
+  def "rolling a spare and a 3 and all other zero results to 16"() {
+    when:
+      game.roll(5,5, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0)
+    then:
+      game.calculateScore() == 16
+  }
 }
