@@ -38,4 +38,11 @@ class BowlingGameSpec extends Specification {
     then:
       game.calculateScore() == 16
   }
+
+  def "rolling a strike and then two threes results to 22"() {
+    when:
+      game.roll(10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0)
+    then:
+      game.calculateScore() == 22
+  }
 }
