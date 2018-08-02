@@ -45,4 +45,11 @@ class BowlingGameSpec extends Specification {
     then:
       game.calculateScore() == 22
   }
+
+  def "Can score a perfect game"() {
+    when:
+      game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+    then:
+      game.calculateScore() == 300
+  }
 }
