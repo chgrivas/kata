@@ -1,4 +1,4 @@
-package com.chgrivas.kata.playground;
+package com.chgrivas.kata.playground.sample;
 
 public class Sample {
 

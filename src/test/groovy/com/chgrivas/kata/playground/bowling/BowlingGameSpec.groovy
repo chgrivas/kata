@@ -1,5 +1,6 @@
-package com.chgrivas.kata.playground
+package com.chgrivas.kata.playground.bowling
 
+import com.chgrivas.kata.playground.bowling.BowlingGame
 import spock.lang.Specification
 
 
