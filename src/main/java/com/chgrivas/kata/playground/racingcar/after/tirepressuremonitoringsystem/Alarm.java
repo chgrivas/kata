@@ -1,30 +1,22 @@
 package com.chgrivas.kata.playground.racingcar.after.tirepressuremonitoringsystem;
 
-public class Alarm
-{
-  private final double LowPressureThreshold = 17;
-  private final double HighPressureThreshold = 21;
+public class Alarm {
 
   private Sensor sensor;
+  private ThresholdEvaluator thresholdEvaluator;
   private boolean alarmOn;
 
-  public Alarm(Sensor sensor) {
+  public Alarm(Sensor sensor, ThresholdEvaluator thresholdEvaluator) {
     this.alarmOn = false;
+    this.thresholdEvaluator = thresholdEvaluator;
     this.sensor = sensor;
   }
 
-  public void check()
-  {
-    double psiPressureValue = sensor.popNextPressurePsiValue();
-
-    if (psiPressureValue < LowPressureThreshold || HighPressureThreshold < psiPressureValue)
-    {
-      alarmOn = true;
-    }
+  public void check() {
+    alarmOn = thresholdEvaluator.shouldAlarmTurnOn(sensor.popNextPressurePsiValue());
   }
 
-  public boolean isAlarmOn()
-  {
+  public boolean isAlarmOn() {
     return alarmOn;
   }
 }

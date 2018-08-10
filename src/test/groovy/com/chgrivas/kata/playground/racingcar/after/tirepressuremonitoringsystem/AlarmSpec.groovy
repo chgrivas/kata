@@ -9,7 +9,7 @@ class AlarmSpec extends Specification {
 
   def "alarm is false initially without checking it"() {
     when:
-      alarm = new Alarm(new PressureSensor())
+      alarm = new Alarm(new PressureSensor(), new PressureThresholdEvaluator())
     then:
       !alarm.alarmOn
   }
@@ -17,11 +17,13 @@ class AlarmSpec extends Specification {
   def "when a sensor returns value above the threshold the alarm is on"() {
     given:
       Sensor sensor = Mock(Sensor)
-      alarm = new Alarm(sensor)
+      ThresholdEvaluator thresholdEvaluator = Mock(ThresholdEvaluator)
+      alarm = new Alarm(sensor, thresholdEvaluator)
     when:
       alarm.check()
     then:
       sensor.popNextPressurePsiValue() >> 100
+      thresholdEvaluator.shouldAlarmTurnOn(100) >> true
       alarm.isAlarmOn()
   }
 }
