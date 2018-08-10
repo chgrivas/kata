@@ -26,4 +26,17 @@ class AlarmSpec extends Specification {
       thresholdEvaluator.isOutOfThresholds(100) >> true
       alarm.isAlarmOn()
   }
+
+  def "when a sensor returns value NOT above the threshold the alarm is off"() {
+    given:
+      Sensor sensor = Mock(Sensor)
+      ThresholdEvaluator thresholdEvaluator = Mock(ThresholdEvaluator)
+      alarm = new Alarm(sensor, thresholdEvaluator)
+    when:
+      alarm.check()
+    then:
+      sensor.popNextPressurePsiValue() >> 20
+      thresholdEvaluator.isOutOfThresholds(20) >> false
+      !alarm.isAlarmOn()
+  }
 }
