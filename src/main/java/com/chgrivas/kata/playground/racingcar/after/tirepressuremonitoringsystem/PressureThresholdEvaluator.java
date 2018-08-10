@@ -6,7 +6,7 @@ public class PressureThresholdEvaluator implements ThresholdEvaluator {
   private static final double HIGH_PRESSURE_THRESHOLD = 21;
 
   @Override
-  public boolean shouldAlarmTurnOn(double psiPressureValue) {
+  public boolean isOutOfThresholds(double psiPressureValue) {
     return psiPressureValue < LOW_PRESSURE_THRESHOLD || HIGH_PRESSURE_THRESHOLD < psiPressureValue;
   }
 }

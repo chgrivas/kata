@@ -13,7 +13,7 @@ public class Alarm {
   }
 
   public void check() {
-    alarmOn = thresholdEvaluator.shouldAlarmTurnOn(sensor.popNextPressurePsiValue());
+    alarmOn = thresholdEvaluator.isOutOfThresholds(sensor.popNextPressurePsiValue());
   }
 
   public boolean isAlarmOn() {

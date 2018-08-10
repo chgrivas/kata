@@ -23,7 +23,7 @@ class AlarmSpec extends Specification {
       alarm.check()
     then:
       sensor.popNextPressurePsiValue() >> 100
-      thresholdEvaluator.shouldAlarmTurnOn(100) >> true
+      thresholdEvaluator.isOutOfThresholds(100) >> true
       alarm.isAlarmOn()
   }
 }

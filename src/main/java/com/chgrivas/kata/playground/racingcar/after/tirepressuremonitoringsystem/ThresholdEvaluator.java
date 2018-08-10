@@ -2,5 +2,5 @@ package com.chgrivas.kata.playground.racingcar.after.tirepressuremonitoringsyste
 
 public interface ThresholdEvaluator {
 
-  boolean shouldAlarmTurnOn(double psiPressureValue);
+  boolean isOutOfThresholds(double psiPressureValue);
 }
